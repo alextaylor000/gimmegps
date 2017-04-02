@@ -20,4 +20,10 @@ describe ImageMetadata do
   it 'raises an ImageNotReadable error when the image cannot be read' do
     expect { broken_image['anything'] }.to raise_error ImageMetadata::ImageNotReadable
   end
+
+  describe '#filename' do
+    it 'returns the filename of the image' do
+      expect(image.filename).to match %r{sample/image_with_metadata.jpg}
+    end
+  end
 end

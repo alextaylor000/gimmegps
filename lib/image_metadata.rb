@@ -1,13 +1,13 @@
 require 'exif'
-require 'byebug'
 
 class ImageMetadata
-  attr_reader :exif_data
+  attr_reader :exif_data, :filename
 
   class ImageNotReadable < StandardError; end
 
   def initialize(filename)
     @exif_data = Exif::Data.new(filename)
+    @filename = filename
 
   # the Exif gem raises an unfortunately generic
   # RuntimeError when a file is not readable, so
